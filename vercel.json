@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    { "source": "/comments/feed", "destination": "/", "permanent": true },
+    { "source": "/comments/feed/", "destination": "/", "permanent": true },
+    { "source": "/feed", "destination": "/", "permanent": true },
+    { "source": "/feed/", "destination": "/", "permanent": true },
+    { "source": "/news-und-infos", "destination": "/", "permanent": true },
+    { "source": "/news-und-infos/", "destination": "/", "permanent": true },
+    { "source": "/voris-services", "destination": "/", "permanent": true },
+    { "source": "/voris-services/", "destination": "/", "permanent": true },
+    { "source": "/services", "destination": "/", "permanent": true },
+    { "source": "/services/", "destination": "/", "permanent": true },
+    { "source": "/offshore-asset-protection", "destination": "/", "permanent": true },
+    { "source": "/offshore-asset-protection/", "destination": "/", "permanent": true },
+    { "source": "/store/:path*", "destination": "/", "permanent": true },
+    { "source": "/about", "destination": "/", "permanent": true },
+    { "source": "/about/", "destination": "/", "permanent": true },
+    { "source": "/contact", "destination": "/", "permanent": true },
+    { "source": "/contact/", "destination": "/", "permanent": true },
+    { "source": "/problemorientiertes-krisenmanagement/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-content/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-admin/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-login.php", "destination": "/", "permanent": true },
+    { "source": "/wp-json/:path*", "destination": "/", "permanent": true }
+  ]
+}
