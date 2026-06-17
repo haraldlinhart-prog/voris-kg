@@ -1397,5 +1397,15 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
   });
 });
 </script>
+
+<!-- Beehiiv Newsletter Widget – PAN21 Netzwerk -->
+<div id="pan21-newsletter-widget" style="position:fixed;bottom:24px;right:24px;z-index:99999;font-family:system-ui,sans-serif;">
+  <div id="pan21-nl-btn" onclick="document.getElementById('pan21-nl-panel').style.display='flex';this.style.display='none';" style="background:#1a2744;color:#c9a84c;padding:.6rem 1.1rem;border-radius:24px;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.25);font-size:.85rem;font-weight:500;"><span style="font-size:1rem;">✉</span> Newsletter abonnieren</div>
+  <div id="pan21-nl-panel" style="display:none;flex-direction:column;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.2);width:320px;overflow:hidden;">
+    <div style="background:#1a2744;padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center;"><span style="color:#c9a84c;font-weight:600;font-size:.9rem;">PAN21 Newsletter</span><span onclick="document.getElementById('pan21-nl-panel').style.display='none';document.getElementById('pan21-nl-btn').style.display='flex';" style="color:rgba(255,255,255,0.6);cursor:pointer;font-size:1.1rem;line-height:1;">✕</span></div>
+    <div style="padding:.5rem;"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="8d7de39c-fa6e-4d7a-9732-4d48998c712b"></script></div>
+  </div>
+</div>
+<!-- End Beehiiv Newsletter Widget -->
 </body>
 </html>
