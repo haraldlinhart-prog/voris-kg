@@ -1434,5 +1434,62 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 </div>
 <!-- REVIVE:END -->
 
+
+<!-- BEEHIIV:START -->
+
+<!-- BEEHIIV WIDGET: eigenes Design, kein Iframe, API-basiert -->
+<div id="pan21-nl-wrap" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:system-ui,sans-serif;">
+  <button id="pan21-nl-btn" onclick="(function(){var w=document.getElementById('pan21-nl-card');var open=w.style.display==='block';w.style.display=open?'none':'block';document.getElementById('pan21-nl-btn').innerHTML=open?'<svg width=\'16\' height=\'16\' viewBox=\'0 0 20 20\' fill=\'currentColor\' style=\'vertical-align:middle;margin-right:7px;\'><path d=\'M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z\'/><path d=\'M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z\'/></svg>Newsletter':'&#10005; Schlie&szlig;en';})()" style="background:#0B1F3A;color:#C9963A;border:1.5px solid rgba(196,150,58,0.45);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;display:flex;align-items:center;gap:7px;box-shadow:0 3px 14px rgba(0,0,0,0.28);letter-spacing:0.04em;"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"/><path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"/></svg>Newsletter</button>
+  <div id="pan21-nl-card" style="display:none;margin-top:8px;width:320px;background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(11,31,58,0.22);border:1px solid #E2DDD8;overflow:hidden;">
+    <div style="background:#0B1F3A;padding:16px 20px;">
+      <div style="font-family:Georgia,serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:2px;">PAN21 Newsletter</div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,0.55);letter-spacing:0.08em;text-transform:uppercase;">Neuigkeiten &amp; Updates</div>
+    </div>
+    <div style="padding:20px;">
+      <p style="font-size:0.84rem;color:#5E7085;line-height:1.55;margin-bottom:16px;">Aktuelle Informationen aus dem PAN21-Netzwerk. Kein Spam, jederzeit abbestellbar.</p>
+      <div id="pan21-nl-form">
+        <input id="pan21-nl-email" type="email" placeholder="Ihre E-Mail-Adresse" style="width:100%;padding:10px 12px;border:1.5px solid #DDE3EC;border-radius:5px;font-size:0.875rem;font-family:system-ui,sans-serif;color:#1A2530;outline:none;margin-bottom:10px;box-sizing:border-box;" onfocus="this.style.borderColor='#0B1F3A'" onblur="this.style.borderColor='#DDE3EC'">
+        <button onclick="pan21NlSubmit()" style="width:100%;background:#C4963A;color:#fff;border:none;padding:11px;border-radius:5px;font-weight:700;font-size:0.875rem;cursor:pointer;letter-spacing:0.04em;">Jetzt anmelden</button>
+      </div>
+      <div id="pan21-nl-ok" style="display:none;text-align:center;padding:12px 0;">
+        <div style="font-size:1.5rem;margin-bottom:6px;">✓</div>
+        <div style="font-weight:700;color:#0B1F3A;font-size:0.9rem;">Angemeldet!</div>
+        <div style="font-size:0.78rem;color:#5E7085;margin-top:4px;">Bitte bestätigen Sie Ihre E-Mail.</div>
+      </div>
+      <div id="pan21-nl-err" style="display:none;background:#FEF2F2;border-radius:4px;padding:8px 12px;font-size:0.78rem;color:#991B1B;margin-top:8px;"></div>
+    </div>
+  </div>
+</div>
+<script>
+async function pan21NlSubmit(){
+  var email=document.getElementById('pan21-nl-email').value.trim();
+  if(!email||!email.includes('@')){
+    var err=document.getElementById('pan21-nl-err');
+    err.textContent='Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+    err.style.display='block';return;
+  }
+  document.getElementById('pan21-nl-err').style.display='none';
+  var btn=event.target||document.querySelector('#pan21-nl-form button');
+  btn.textContent='Wird gesendet…';btn.disabled=true;
+  try{
+    var res=await fetch('https://news.pan21.com/api/beehiiv-subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})});
+    if(res.ok){
+      document.getElementById('pan21-nl-form').style.display='none';
+      document.getElementById('pan21-nl-ok').style.display='block';
+    }else{
+      var d=await res.json();
+      document.getElementById('pan21-nl-err').textContent=d.error||'Fehler. Bitte versuchen Sie es später.';
+      document.getElementById('pan21-nl-err').style.display='block';
+      btn.textContent='Jetzt anmelden';btn.disabled=false;
+    }
+  }catch(e){
+    document.getElementById('pan21-nl-err').textContent='Netzwerkfehler. Bitte versuchen Sie es später.';
+    document.getElementById('pan21-nl-err').style.display='block';
+    btn.textContent='Jetzt anmelden';btn.disabled=false;
+  }
+}
+</script>
+<!-- BEEHIIV:END -->
+
 </body>
 </html>
