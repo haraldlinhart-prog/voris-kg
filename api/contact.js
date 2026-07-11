@@ -60,7 +60,12 @@ function isGibberish(str) {
       if (prevUpper !== curUpper) transitions++;
     }
     const transitionRatio = transitions / (letters.length - 1);
-    if (vowelRatio < 0.2 && transitionRatio > 0.35) return true;
+    // Tiered threshold: longer strings need a less extreme vowel-ratio to be flagged,
+    // since genuine long words (esp. German compounds) always carry a healthy vowel
+    // share, while short strings need a stricter cutoff to avoid catching real
+    // camelCase brand names (McDonald, PayPal, JavaScript...).
+    const vowelThreshold = letters.length >= 14 ? 0.28 : (letters.length >= 11 ? 0.22 : 0.16);
+    if (vowelRatio < vowelThreshold && transitionRatio > 0.3) return true;
   }
   if (/\S{61,}/.test(str || '')) return true;
   return false;
