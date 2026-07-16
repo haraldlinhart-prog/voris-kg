@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ═══════════════════════════════════════════════════════════
+     FAVICON
+═══════════════════════════════════════════════════════════ -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0a0a0a">
+
+<!-- ═══════════════════════════════════════════════════════════
      SEO – Klassische Suchmaschinen
 ═══════════════════════════════════════════════════════════ -->
 <title>Vermögensschutz & Asset Protection | VORIS – Frankfurt · Zug</title>
@@ -200,10 +211,9 @@ nav {
   height: 72px;
 }
 .nav-logo {
-  font-family: var(--ff-d); font-size: 1.6rem; font-weight: 400;
-  color: var(--white); text-decoration: none; letter-spacing: .12em;
+  display: flex; align-items: center; text-decoration: none;
 }
-.nav-logo span { color: var(--gold); }
+.nav-logo-svg { height: 36px; width: auto; display: block; }
 .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
 .nav-links a {
   font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
@@ -577,8 +587,7 @@ footer {
   max-width: var(--max); margin: 0 auto;
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
 }
-.footer-logo { font-family: var(--ff-d); font-size: 1.4rem; letter-spacing: .12em; color: var(--white); margin-bottom: .8rem; }
-.footer-logo span { color: var(--gold); }
+.footer-logo { height: 34px; width: auto; display: block; margin-bottom: .9rem; }
 .footer-brand p { font-size: .75rem; color: rgba(255,255,255,.3); line-height: 1.7; max-width: 260px; }
 .footer-col h4 { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 1rem; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
@@ -657,7 +666,23 @@ body.en [data-lang="en"] { display: block; }
 <!-- ══════════════════════ NAV ══════════════════════ -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="#hero">VOR<span>IS</span></a>
+    <a class="nav-logo" href="#hero" aria-label="VORIS – Startseite">
+      <svg viewBox="0 0 640 160" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e8c97a"/>
+            <stop offset="50%" stop-color="#c9a84c"/>
+            <stop offset="100%" stop-color="#9a7830"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(0,10)">
+          <polygon points="70,0 140,23 140,79 70,140 0,79 0,23" fill="none" stroke="url(#navGoldGrad)" stroke-width="3"/>
+          <path d="M 21 30 L 70 103 L 119 30" fill="none" stroke="url(#navGoldGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="70" cy="44" r="3.5" fill="#c9a84c"/>
+        </g>
+        <text x="178" y="100" font-family="'Cormorant Garamond', Georgia, serif" font-size="72" letter-spacing="4" fill="#ffffff">VOR<tspan fill="url(#navGoldGrad)">IS</tspan></text>
+      </svg>
+    </a>
     <button class="hamburger" aria-label="Menü" onclick="document.getElementById('navLinks').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
@@ -1159,7 +1184,21 @@ body.en [data-lang="en"] { display: block; }
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo">VOR<span>IS</span></div>
+      <svg viewBox="0 0 640 160" class="footer-logo" xmlns="http://www.w3.org/2000/svg" aria-label="VORIS">
+        <defs>
+          <linearGradient id="footerGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e8c97a"/>
+            <stop offset="50%" stop-color="#c9a84c"/>
+            <stop offset="100%" stop-color="#9a7830"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(0,10)">
+          <polygon points="70,0 140,23 140,79 70,140 0,79 0,23" fill="none" stroke="url(#footerGoldGrad)" stroke-width="3"/>
+          <path d="M 21 30 L 70 103 L 119 30" fill="none" stroke="url(#footerGoldGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="70" cy="44" r="3.5" fill="#c9a84c"/>
+        </g>
+        <text x="178" y="100" font-family="'Cormorant Garamond', Georgia, serif" font-size="72" letter-spacing="4" fill="#ffffff">VOR<tspan fill="url(#footerGoldGrad)">IS</tspan></text>
+      </svg>
       <p><span data-lang="de">Deutsche Repräsentanz der Lighthouse Trust Limited. Teil der internationalen Lighthouse-Gruppe · Stammhaus Zug, Schweiz.</span><span data-lang="en">German representative of Lighthouse Trust Limited. Part of the international Lighthouse Group · Headquarters Zug, Switzerland.</span></p>
     </div>
     <div class="footer-col">
