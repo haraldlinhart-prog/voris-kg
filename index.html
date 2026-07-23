@@ -1811,5 +1811,112 @@ async function pan21NlSubmit(){
 <img src="//:0" alt="" style="display:none" onerror="(function(){var w=document.getElementById('pan21HeroVideoWrap');if(!w||w.getAttribute('data-placed'))return;w.setAttribute('data-placed','1');var h=document.querySelector('.hero')||document.querySelector('#hero')||(document.querySelector('main')?document.querySelector('main').firstElementChild:null);if(h){var cs=getComputedStyle(h);if(cs.position==='static'){h.style.position='relative'}var textEl=h.querySelector('h1')||h.querySelector('h2')||h;var tc=getComputedStyle(textEl).color;var mm=tc.match(/\d+(\.\d+)?/g);var overlay='rgba(0,0,0,0.45)';if(mm&&mm.length>=3){var lum=(0.299*mm[0]+0.587*mm[1]+0.114*mm[2])/255;overlay=lum<0.5?'rgba(255,255,255,0.82)':'rgba(0,0,0,0.62)'}w.style.setProperty('--pan21-hero-overlay',overlay);h.style.background='none';h.style.backgroundImage='none';h.style.backgroundColor='transparent';h.insertBefore(w,h.firstChild);w.style.cssText='position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;';w.style.setProperty('--pan21-hero-overlay',overlay);for(var i=0;i<h.children.length;i++){var c=h.children[i];if(c===w)continue;var ccs=getComputedStyle(c);if(ccs.position==='static'){c.style.position='relative'}if(ccs.zIndex==='auto'){c.style.zIndex='1'}}}else{w.style.cssText='position:fixed;inset:0;width:100%;height:100%;z-index:-1;overflow:hidden;pointer-events:none;';document.body.insertBefore(w,document.body.firstChild)}w.style.display='block'})();">
 <!-- HERO_VIDEO:END -->
 
+
+<!-- SUPPORT:START -->
+
+<!-- SUPPORT BUTTON + POPUP -->
+<style>
+iframe[src*="tawk.to"] { visibility: hidden !important; }
+body.pan21-sup-tawk-visible iframe[src*="tawk.to"] { visibility: visible !important; }
+</style>
+<script type="text/javascript">
+if(!window.__pan21SupTawkLoaded){
+  window.__pan21SupTawkLoaded = true;
+  var Tawk_API=window.Tawk_API||{}, Tawk_LoadStart=new Date();
+  window.Tawk_API = Tawk_API;
+  Tawk_API.onChatMinimized = function(){ document.body.classList.remove('pan21-sup-tawk-visible'); };
+  Tawk_API.onChatHidden = function(){ document.body.classList.remove('pan21-sup-tawk-visible'); };
+  Tawk_API.onStatusChange = function(status){
+    var dot = document.getElementById('pan21-sup-live-dot');
+    var txt = document.getElementById('pan21-sup-live-text');
+    if(!dot || !txt) return;
+    if(status === 'online'){ dot.style.background='#16a34a'; txt.textContent='Jetzt live verfügbar'; }
+    else { dot.style.background='#94a3b8'; txt.textContent='Aktuell nicht live besetzt'; }
+  };
+  (function(){
+    var s1=document.createElement('script'),s0=document.getElementsByTagName('script')[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/61bf7a2980b2296cfdd270cb/1fn9vacl0';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+}
+function pan21SupOpenTawk(){
+  document.body.classList.add('pan21-sup-tawk-visible');
+  if(window.Tawk_API && Tawk_API.maximize) Tawk_API.maximize();
+}
+// Sprach-Umschaltung: exakt dieselbe Erkennung wie im firmenkauf.org-Widget
+// (public/widget.js detectLang) - html[lang] beginnt mit "en", ODER body hat
+// Klasse "en", sonst Deutsch. MutationObserver deckt Next.js-Client-Routing
+// ab, bei dem sich html[lang] erst nach initialem Render/Sprachwechsel setzt.
+function pan21SupDetectLang(){
+  var htmlLang = (document.documentElement.lang || '').toLowerCase();
+  if (htmlLang.indexOf('en') === 0) return 'en';
+  if (document.body.classList.contains('en')) return 'en';
+  return 'de';
+}
+function pan21SupApplyLang(){
+  var lang = pan21SupDetectLang();
+  var nodes = document.querySelectorAll('#pan21-sup-wrap .pan21-sup-i18n');
+  for (var i = 0; i < nodes.length; i++) {
+    var el = nodes[i];
+    var txt = el.getAttribute('data-p21sup' + lang);
+    if (txt !== null) el.innerHTML = txt;
+  }
+}
+document.addEventListener('DOMContentLoaded', pan21SupApplyLang);
+if (document.readyState !== 'loading') pan21SupApplyLang();
+new MutationObserver(pan21SupApplyLang).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+</script>
+<div id="pan21-sup-wrap" style="position:fixed;bottom:212px;right:24px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;">
+  <button id="pan21-sup-btn" onclick="(function(){var w=document.getElementById('pan21-sup-card');var open=w.style.display==='block';w.style.display=open?'none':'block';})()" style="display:flex;align-items:center;gap:7px;background:#0B1F3A;color:#C9963A;border:1.5px solid rgba(196,150,58,0.45);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;box-shadow:0 3px 14px rgba(0,0,0,0.28);letter-spacing:0.04em;">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="flex-shrink:0;"><path d="M18 10c0 3.866-3.582 7-8 7a8.84 8.84 0 01-2.556-.372c-.605.526-1.775 1.372-3.444 1.372a.5.5 0 01-.4-.8c.5-.667.9-1.6 1.05-2.4C3.02 13.55 2 11.9 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7z"/></svg>
+    <span class="pan21-sup-i18n" data-p21supde="Support" data-p21supen="Support">Support</span>
+  </button>
+  <div id="pan21-sup-card" style="display:none;position:absolute;bottom:56px;right:0;width:380px;max-width:calc(100vw - 48px);max-height:min(640px, calc(100vh - 100px));overflow-y:auto;background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(11,31,58,0.28);border:1px solid #E2DDD8;">
+    <div style="background:#0B1F3A;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1;">
+      <div>
+        <div style="font-family:Georgia,serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:2px;" class="pan21-sup-i18n" data-p21supde="Support" data-p21supen="Support">Support</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.55);letter-spacing:0.08em;text-transform:uppercase;" class="pan21-sup-i18n" data-p21supde="Wählen Sie, was gerade passt" data-p21supen="Choose what works for you">Wählen Sie, was gerade passt</div>
+      </div>
+      <button onclick="document.getElementById('pan21-sup-card').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;padding:0;">&#10005;</button>
+    </div>
+    <div style="padding:18px 20px;display:flex;flex-direction:column;gap:14px;">
+
+      <a href="#" onclick="(function(e){e.preventDefault();if(document.getElementById('famulor-widget-embed'))return;var s=document.createElement('script');s.id='famulor-widget-embed';s.src='https://app.famulor.de/embed.js';s.setAttribute('data-assistant-id','2ff6ddca-ffcb-43f1-8b4a-4c71025e3fed');document.body.appendChild(s);})(event)" style="display:block;border:1px solid #E2DDD8;border-radius:8px;padding:14px;text-decoration:none;cursor:pointer;">
+        <div style="font-family:Georgia,serif;font-size:1rem;color:#0B1F3A;margin-bottom:4px;" class="pan21-sup-i18n" data-p21supde="&#128172; KI-Chat &amp; Netz-Telefon" data-p21supen="&#128172; AI Chat &amp; Voice Call">&#128172; KI-Chat &amp; Netz-Telefon</div>
+        <div style="display:inline-flex;align-items:center;gap:5px;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:#16a34a;font-weight:600;margin-bottom:8px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#16a34a;display:inline-block"></span><span class="pan21-sup-i18n" data-p21supde="Immer sofort verfügbar" data-p21supen="Always available">Immer sofort verfügbar</span>
+        </div>
+        <div style="font-size:.8rem;color:#5a6a7e;line-height:1.55;" class="pan21-sup-i18n" data-p21supde="Tippen oder sprechen Sie mit unserem KI-Assistenten &mdash; direkt im Browser, kein Telefon nötig. Auf Wunsch verbindet er Sie live mit unserem Team. &lt;strong style=&quot;color:#FF6B35;&quot;&gt;Jetzt starten &rarr;&lt;/strong&gt;" data-p21supen="Type or talk to our AI assistant &mdash; right in your browser, no phone needed. On request, it connects you live with our team. &lt;strong style=&quot;color:#FF6B35;&quot;&gt;Start now &rarr;&lt;/strong&gt;">Tippen oder sprechen Sie mit unserem KI-Assistenten &mdash; direkt im Browser, kein Telefon nötig. Auf Wunsch verbindet er Sie live mit unserem Team. <strong style="color:#FF6B35;">Jetzt starten &rarr;</strong></div>
+      </a>
+
+      <a href="#" onclick="pan21SupOpenTawk();return false;" style="display:block;border:1px solid #E2DDD8;border-radius:8px;padding:14px;text-decoration:none;cursor:pointer;">
+        <div style="font-family:Georgia,serif;font-size:1rem;color:#0B1F3A;margin-bottom:4px;" class="pan21-sup-i18n" data-p21supde="&#128100; Live-Person im Chat" data-p21supen="&#128100; Live Person in Chat">&#128100; Live-Person im Chat</div>
+        <div style="display:inline-flex;align-items:center;gap:5px;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:#94a3b8;font-weight:600;margin-bottom:8px;">
+          <span id="pan21-sup-live-dot" style="width:7px;height:7px;border-radius:50%;background:#94a3b8;display:inline-block"></span><span id="pan21-sup-live-text" class="pan21-sup-i18n" data-p21supde="Status wird geprüft&hellip;" data-p21supen="Checking status&hellip;">Status wird geprüft&hellip;</span>
+        </div>
+        <div style="font-size:.8rem;color:#5a6a7e;line-height:1.55;" class="pan21-sup-i18n" data-p21supde="Ist gerade jemand aus unserem Team online, steigt er direkt in denselben Chat mit ein &mdash; ohne Kanalwechsel." data-p21supen="If someone from our team is online right now, they'll join this same chat directly &mdash; no need to switch channels.">Ist gerade jemand aus unserem Team online, steigt er direkt in denselben Chat mit ein &mdash; ohne Kanalwechsel.</div>
+      </a>
+
+      <a href="tel:+493056844500" style="display:block;border:1px solid #E2DDD8;border-radius:8px;padding:14px;text-decoration:none;cursor:pointer;">
+        <div style="font-family:Georgia,serif;font-size:1rem;color:#0B1F3A;margin-bottom:4px;" class="pan21-sup-i18n" data-p21supde="&#128222; Telefon-Hotline &amp; Bestell-Hotline" data-p21supen="&#128222; Phone &amp; Order Hotline">&#128222; Telefon-Hotline &amp; Bestell-Hotline</div>
+        <div style="display:inline-flex;align-items:center;gap:5px;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:#16a34a;font-weight:600;margin-bottom:8px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#16a34a;display:inline-block"></span><span class="pan21-sup-i18n" data-p21supde="Immer sofort verfügbar" data-p21supen="Always available">Immer sofort verfügbar</span>
+        </div>
+        <div style="font-size:.8rem;color:#5a6a7e;line-height:1.55;" class="pan21-sup-i18n" data-p21supde="Beratung zu Firmengründung, Anliegen &amp; Bestellungen &mdash; auf Wunsch direkt mit einem Mitarbeiter verbunden. &lt;strong style=&quot;color:#0B1F3A;&quot;&gt;+49 30 568 44 500&lt;/strong&gt;" data-p21supen="Advice on company formation, questions &amp; orders &mdash; connected directly with a team member on request. &lt;strong style=&quot;color:#0B1F3A;&quot;&gt;+49 30 568 44 500&lt;/strong&gt;">Beratung zu Firmengründung, Anliegen &amp; Bestellungen &mdash; auf Wunsch direkt mit einem Mitarbeiter verbunden. <strong style="color:#0B1F3A;">+49 30 568 44 500</strong></div>
+      </a>
+
+      <div style="background:#F7F5F1;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:.72rem;font-weight:700;color:#0B1F3A;margin-bottom:4px;" class="pan21-sup-i18n" data-p21supde="&#8505;&#65039; Gut zu wissen" data-p21supen="&#8505;&#65039; Good to know">&#8505;&#65039; Gut zu wissen</div>
+        <div style="font-size:.74rem;color:#5a6a7e;line-height:1.55;" class="pan21-sup-i18n" data-p21supde="Der Sprachanruf im Browser verbindet Sie technisch mit derselben Hotline wie ein Anruf unter +49 30 568 44 500 &mdash; nur direkt aus dem Browser, weltweit, ohne Auslandsgebühren. Mikrofon/Lautsprecher genügen, kein Telefon nötig." data-p21supen="The in-browser voice call technically connects you to the same hotline as calling +49 30 568 44 500 &mdash; just directly from your browser, worldwide, with no international fees. A microphone/speakers is all you need, no phone required.">Der Sprachanruf im Browser verbindet Sie technisch mit derselben Hotline wie ein Anruf unter +49 30 568 44 500 &mdash; nur direkt aus dem Browser, weltweit, ohne Auslandsgebühren. Mikrofon/Lautsprecher genügen, kein Telefon nötig.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- SUPPORT:END -->
+
 </body>
 </html>
