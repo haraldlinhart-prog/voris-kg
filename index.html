@@ -296,17 +296,20 @@ nav {
 .hero-eyebrow {
   font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
   color: var(--gold); font-weight: 500; margin-bottom: 2rem;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.7);
 }
 .hero h1 {
   font-family: var(--ff-d);
   font-size: clamp(2.8rem,5vw,4.8rem);
   font-weight: 300; line-height: 1.08;
   color: var(--white); margin-bottom: 1.5rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.6);
 }
 .hero h1 em { color: var(--gold-lt); font-style: italic; }
 .hero-lead {
-  font-size: .85rem; color: rgba(255,255,255,.55);
+  font-size: .85rem; color: rgba(255,255,255,.85);
   max-width: 480px; margin-bottom: 2.5rem; line-height: 1.85; letter-spacing: .02em;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.65);
 }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
 .btn-primary {
@@ -336,8 +339,8 @@ nav {
   border-top: 1px solid rgba(201,168,76,.12);
 }
 .hero-meta-item { }
-.hero-meta-label { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .3rem; }
-.hero-meta-val { font-family: var(--ff-d); font-size: 1.05rem; color: rgba(255,255,255,.7); }
+.hero-meta-label { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: .3rem; text-shadow: 0 1px 8px rgba(0,0,0,0.6); }
+.hero-meta-val { font-family: var(--ff-d); font-size: 1.05rem; color: rgba(255,255,255,.92); text-shadow: 0 1px 10px rgba(0,0,0,0.65); }
 
 /* Hero right panel */
 .hero-panel {
@@ -1555,7 +1558,7 @@ async function pan21NlSubmit(){
     <source src="https://video.pan21.com/videos/46282-446732337_1781509935_1.mp4" type="video/mp4">
   </video>
 </div>
-<img src="//:0" alt="" style="display:none" onerror="(function(){var w=document.getElementById('pan21HeroVideoWrap');if(!w||w.getAttribute('data-placed'))return;w.setAttribute('data-placed','1');var h=document.querySelector('.hero')||document.querySelector('#hero')||(document.querySelector('main')?document.querySelector('main').firstElementChild:null);if(h){var cs=getComputedStyle(h);if(cs.position==='static'){h.style.position='relative'}var textEl=h.querySelector('h1')||h.querySelector('h2')||h;var tc=getComputedStyle(textEl).color;var mm=tc.match(/\d+(\.\d+)?/g);var overlay='rgba(0,0,0,0.45)';if(mm&&mm.length>=3){var lum=(0.299*mm[0]+0.587*mm[1]+0.114*mm[2])/255;overlay=lum<0.5?'rgba(255,255,255,0.82)':'rgba(0,0,0,0.5)'}w.style.setProperty('--pan21-hero-overlay',overlay);h.style.background='none';h.style.backgroundImage='none';h.style.backgroundColor='transparent';h.insertBefore(w,h.firstChild);w.style.cssText='position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;';w.style.setProperty('--pan21-hero-overlay',overlay);for(var i=0;i<h.children.length;i++){var c=h.children[i];if(c===w)continue;var ccs=getComputedStyle(c);if(ccs.position==='static'){c.style.position='relative'}if(ccs.zIndex==='auto'){c.style.zIndex='1'}}}else{w.style.cssText='position:fixed;inset:0;width:100%;height:100%;z-index:-1;overflow:hidden;pointer-events:none;';document.body.insertBefore(w,document.body.firstChild)}w.style.display='block'})();">
+<img src="//:0" alt="" style="display:none" onerror="(function(){var w=document.getElementById('pan21HeroVideoWrap');if(!w||w.getAttribute('data-placed'))return;w.setAttribute('data-placed','1');var h=document.querySelector('.hero')||document.querySelector('#hero')||(document.querySelector('main')?document.querySelector('main').firstElementChild:null);if(h){var cs=getComputedStyle(h);if(cs.position==='static'){h.style.position='relative'}var textEl=h.querySelector('h1')||h.querySelector('h2')||h;var tc=getComputedStyle(textEl).color;var mm=tc.match(/\d+(\.\d+)?/g);var overlay='rgba(0,0,0,0.45)';if(mm&&mm.length>=3){var lum=(0.299*mm[0]+0.587*mm[1]+0.114*mm[2])/255;overlay=lum<0.5?'rgba(255,255,255,0.82)':'rgba(0,0,0,0.62)'}w.style.setProperty('--pan21-hero-overlay',overlay);h.style.background='none';h.style.backgroundImage='none';h.style.backgroundColor='transparent';h.insertBefore(w,h.firstChild);w.style.cssText='position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;';w.style.setProperty('--pan21-hero-overlay',overlay);for(var i=0;i<h.children.length;i++){var c=h.children[i];if(c===w)continue;var ccs=getComputedStyle(c);if(ccs.position==='static'){c.style.position='relative'}if(ccs.zIndex==='auto'){c.style.zIndex='1'}}}else{w.style.cssText='position:fixed;inset:0;width:100%;height:100%;z-index:-1;overflow:hidden;pointer-events:none;';document.body.insertBefore(w,document.body.firstChild)}w.style.display='block'})();">
 <!-- HERO_VIDEO:END -->
 
 </body>
