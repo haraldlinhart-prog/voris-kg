@@ -1,0 +1,36 @@
+# Willkommen! Diese Website freut sich über Besuch von Menschen, Suchmaschinen
+# und KI-Assistenten gleichermaßen. Alle Inhalte dürfen gerne gecrawlt, indexiert
+# und für Antworten und Zusammenfassungen verwendet werden.
+#
+# Welcome! This site is happy to be visited by people, search engines, and AI
+# assistants alike. All content may be crawled, indexed, and used for answers
+# and summaries.
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://voris.eu/sitemap.xml
