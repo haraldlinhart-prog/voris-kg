@@ -47,6 +47,7 @@ const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || "");
 // E-Mail-Blockliste — normalisiert Gmail-Punkte/Plus-Tags, damit Bots sie nicht
 // durch e.dip.a.ju.l.o.d.ev.8.5@gmail.com vs. ed.ip.ajulo.de.v85@gmail.com umgehen.
 const BLOCKED_EMAILS = new Set([
+  'zazacukeq266@gmail.com',
   'edipajulodev85@gmail.com',
 ]);
 function normalizeEmail(email) {
@@ -63,6 +64,17 @@ function normalizeEmail(email) {
 }
 
 function isGibberish(str) {
+  const trimmed = (str || '').trim();
+
+  // Eine komplette Nachricht, die aus einem einzigen zusammenhängenden Token
+  // mit gemischter Groß-/Kleinschreibung besteht (keine Leerzeichen, keine
+  // Satzzeichen), ist praktisch nie eine echte menschliche Nachricht — auch
+  // wenn der Vokalanteil zufällig hoch genug ist, um die Ratio-Prüfung unten
+  // zu unterlaufen (z.B. durch zufällig viele "y"s).
+  if (/^[a-zA-ZäöüÄÖÜß]{10,40}$/.test(trimmed) && /[a-zäöüß]/.test(trimmed) && /[A-ZÄÖÜ]/.test(trimmed)) {
+    return true;
+  }
+
   const words = (str || '').split(/\s+/).filter(w => w.length >= 6);
   const vowelChars = 'aeiouyAEIOUYäöüÄÖÜàáâãåèéêëìíîïòóôõùúûýÀÁÂÃÅÈÉÊËÌÍÎÏÒÓÔÕÙÚÛÝ';
   for (const word of words) {
@@ -78,10 +90,6 @@ function isGibberish(str) {
       if (prevUpper !== curUpper) transitions++;
     }
     const transitionRatio = transitions / (letters.length - 1);
-    // Tiered threshold: longer strings need a less extreme vowel-ratio to be flagged,
-    // since genuine long words (esp. German compounds) always carry a healthy vowel
-    // share, while short strings need a stricter cutoff to avoid catching real
-    // camelCase brand names (McDonald, PayPal, JavaScript...).
     const vowelThreshold = letters.length >= 14 ? 0.28 : (letters.length >= 11 ? 0.22 : 0.16);
     if (vowelRatio < vowelThreshold && transitionRatio > 0.3) return true;
   }
