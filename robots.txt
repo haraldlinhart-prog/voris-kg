@@ -33,4 +33,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://voris.eu/sitemap.xml
+Sitemap: https://www.voris.eu/sitemap.xml
