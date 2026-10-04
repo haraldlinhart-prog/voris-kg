@@ -1816,37 +1816,7 @@ async function pan21NlSubmit(){
 <!-- SUPPORT:START -->
 
 <!-- SUPPORT BUTTON + POPUP -->
-<style>
-iframe[src*="tawk.to"] { visibility: hidden !important; }
-body.pan21-sup-tawk-visible iframe[src*="tawk.to"] { visibility: visible !important; }
-</style>
 <script type="text/javascript">
-if(!window.__pan21SupTawkLoaded){
-  window.__pan21SupTawkLoaded = true;
-  var Tawk_API=window.Tawk_API||{}, Tawk_LoadStart=new Date();
-  window.Tawk_API = Tawk_API;
-  Tawk_API.onChatMinimized = function(){ document.body.classList.remove('pan21-sup-tawk-visible'); };
-  Tawk_API.onChatHidden = function(){ document.body.classList.remove('pan21-sup-tawk-visible'); };
-  Tawk_API.onStatusChange = function(status){
-    var dot = document.getElementById('pan21-sup-live-dot');
-    var txt = document.getElementById('pan21-sup-live-text');
-    if(!dot || !txt) return;
-    if(status === 'online'){ dot.style.background='#16a34a'; txt.textContent='Jetzt live verfügbar'; }
-    else { dot.style.background='#94a3b8'; txt.textContent='Aktuell nicht live besetzt'; }
-  };
-  (function(){
-    var s1=document.createElement('script'),s0=document.getElementsByTagName('script')[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/61bf7a2980b2296cfdd270cb/1fn9vacl0';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
-}
-function pan21SupOpenTawk(){
-  document.body.classList.add('pan21-sup-tawk-visible');
-  if(window.Tawk_API && Tawk_API.maximize) Tawk_API.maximize();
-}
 // Sprach-Umschaltung: exakt dieselbe Erkennung wie im firmenkauf.org-Widget
 // (public/widget.js detectLang) - html[lang] beginnt mit "en", ODER body hat
 // Klasse "en", sonst Deutsch. MutationObserver deckt Next.js-Client-Routing
@@ -1891,14 +1861,6 @@ new MutationObserver(pan21SupApplyLang).observe(document.documentElement, { attr
           <span style="width:7px;height:7px;border-radius:50%;background:#16a34a;display:inline-block"></span><span class="pan21-sup-i18n" data-p21supde="Immer sofort verfügbar" data-p21supen="Always available">Immer sofort verfügbar</span>
         </div>
         <div style="font-size:.8rem;color:#5a6a7e;line-height:1.55;" class="pan21-sup-i18n" data-p21supde="Tippen oder sprechen Sie mit unserem KI-Assistenten &mdash; direkt im Browser, kein Telefon nötig. Auf Wunsch verbindet er Sie live mit unserem Team. &lt;strong style=&quot;color:#FF6B35;&quot;&gt;Jetzt starten &rarr;&lt;/strong&gt;" data-p21supen="Type or talk to our AI assistant &mdash; right in your browser, no phone needed. On request, it connects you live with our team. &lt;strong style=&quot;color:#FF6B35;&quot;&gt;Start now &rarr;&lt;/strong&gt;">Tippen oder sprechen Sie mit unserem KI-Assistenten &mdash; direkt im Browser, kein Telefon nötig. Auf Wunsch verbindet er Sie live mit unserem Team. <strong style="color:#FF6B35;">Jetzt starten &rarr;</strong></div>
-      </a>
-
-      <a href="#" onclick="pan21SupOpenTawk();return false;" style="display:block;border:1px solid #E2DDD8;border-radius:8px;padding:14px;text-decoration:none;cursor:pointer;">
-        <div style="font-family:Georgia,serif;font-size:1rem;color:#0B1F3A;margin-bottom:4px;" class="pan21-sup-i18n" data-p21supde="&#128100; Live-Person im Chat" data-p21supen="&#128100; Live Person in Chat">&#128100; Live-Person im Chat</div>
-        <div style="display:inline-flex;align-items:center;gap:5px;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:#94a3b8;font-weight:600;margin-bottom:8px;">
-          <span id="pan21-sup-live-dot" style="width:7px;height:7px;border-radius:50%;background:#94a3b8;display:inline-block"></span><span id="pan21-sup-live-text" class="pan21-sup-i18n" data-p21supde="Status wird geprüft&hellip;" data-p21supen="Checking status&hellip;">Status wird geprüft&hellip;</span>
-        </div>
-        <div style="font-size:.8rem;color:#5a6a7e;line-height:1.55;" class="pan21-sup-i18n" data-p21supde="Ist gerade jemand aus unserem Team online, steigt er direkt in denselben Chat mit ein &mdash; ohne Kanalwechsel." data-p21supen="If someone from our team is online right now, they'll join this same chat directly &mdash; no need to switch channels.">Ist gerade jemand aus unserem Team online, steigt er direkt in denselben Chat mit ein &mdash; ohne Kanalwechsel.</div>
       </a>
 
       <a href="tel:+493056844500" style="display:block;border:1px solid #E2DDD8;border-radius:8px;padding:14px;text-decoration:none;cursor:pointer;">
