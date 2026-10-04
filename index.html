@@ -143,24 +143,8 @@
 }
 </script>
 
-<!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//counter.ixan.org/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '87']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-
 <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="/fonts/fonts.css" rel="stylesheet">
 
 <style>
 /* ─── RESET & TOKENS ──────────────────────────────────────── */
@@ -245,31 +229,6 @@ nav {
   .nav-links a { padding: .6rem 0; }
   .nav-cta { margin-top: .5rem; display: inline-block; width: fit-content; }
 }
-
-/* ─── COOKIE BANNER ───────────────────────────────────────── */
-.cookie-banner {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: #0d0d0d; border-top: 1px solid rgba(201,168,76,.18);
-  padding: 1.2rem clamp(1.5rem,5vw,4rem);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1.5rem; flex-wrap: wrap;
-}
-.cookie-banner p { font-size: .75rem; color: rgba(255,255,255,.45); line-height: 1.6; max-width: 680px; }
-.cookie-banner a { color: var(--gold); text-decoration: none; }
-.cookie-btns { display: flex; gap: .8rem; flex-shrink: 0; }
-.cookie-accept {
-  background: var(--gold); color: var(--black); border: none;
-  padding: .5rem 1.4rem; font-size: .68rem; letter-spacing: .12em;
-  font-family: var(--ff-b); font-weight: 600; cursor: pointer; transition: background var(--trans);
-}
-.cookie-accept:hover { background: var(--gold-lt); }
-.cookie-decline {
-  background: transparent; color: rgba(255,255,255,.38);
-  border: 1px solid rgba(255,255,255,.15); padding: .5rem 1.4rem;
-  font-size: .68rem; letter-spacing: .12em;
-  font-family: var(--ff-b); cursor: pointer; transition: all var(--trans);
-}
-.cookie-decline:hover { border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.65); }
 
 /* ─── HERO ────────────────────────────────────────────────── */
 .hero {
@@ -658,16 +617,6 @@ body.en [data-lang="en"] { display: block; }
 </style>
 </head>
 <body>
-
-<!-- ══════════════════════ COOKIE BANNER ══════════════════════ -->
-<div class="cookie-banner" id="cookieBanner">
-  <p data-lang="de">Diese Website verwendet Matomo Analytics (selbst gehostet auf counter.ixan.org) zur datenschutzkonformen Analyse. Ihre IP-Adresse wird anonymisiert. Keine Weitergabe an Dritte. <button onclick="showLegal('datenschutz')" style="background:none;border:none;color:var(--gold);cursor:pointer;font-family:inherit;font-size:inherit;padding:0;text-decoration:underline">Datenschutz</button></p>
-  <p data-lang="en">This site uses self-hosted Matomo Analytics. Your IP is anonymised. No data is shared with third parties. <button onclick="showLegal('datenschutz')" style="background:none;border:none;color:var(--gold);cursor:pointer;font-family:inherit;font-size:inherit;padding:0;text-decoration:underline">Privacy Policy</button></p>
-  <div class="cookie-btns">
-    <button class="cookie-accept" onclick="acceptCookies()"><span data-lang="de">Akzeptieren</span><span data-lang="en">Accept</span></button>
-    <button class="cookie-decline" onclick="declineCookies()"><span data-lang="de">Ablehnen</span><span data-lang="en">Decline</span></button>
-  </div>
-</div>
 
 <!-- ══════════════════════ NAV ══════════════════════ -->
 <nav>
@@ -1554,9 +1503,6 @@ body.en [data-lang="en"] { display: block; }
       <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).</p>
       <h3>Verantwortlicher</h3>
       <p>VORIS Service- und Dienstleistungs UG (haftungsbeschränkt) &amp; Co. KG<br>Eschersheimer Landstraße 42, 60322 Frankfurt am Main<br>Kontakt: <a href="#kontakt" onclick="closeLegal('datenschutz')">Kontaktformular</a></p>
-      <h3>Cookies und Tracking</h3>
-      <p>Diese Website verwendet Matomo zur datenschutzkonformen Analyse des Nutzerverhaltens (selbst gehostet auf counter.ixan.org, Site ID: 87). Matomo ist so konfiguriert, dass keine personenbezogenen Daten an Dritte weitergegeben werden. Ihre IP-Adresse wird vor der Speicherung anonymisiert. Matomo wird erst nach Ihrer Einwilligung über das Cookie-Banner aktiviert.</p>
-      <p><button onclick="matomoOptOut()" style="background:transparent;border:1px solid rgba(201,168,76,.35);color:var(--gold);padding:8px 18px;font-size:.72rem;letter-spacing:.1em;cursor:pointer;font-family:inherit">Matomo-Tracking deaktivieren</button></p>
       <h3>Online-Terminbuchung</h3>
       <p>Beim Buchen eines Termins über telefon-termin.com gelten die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
       <h3>Ihre Rechte</h3>
@@ -1567,8 +1513,6 @@ body.en [data-lang="en"] { display: block; }
       <p>Protecting your personal data is of particular concern to us. We therefore process your data exclusively on the basis of the statutory provisions (GDPR).</p>
       <h3>Controller</h3>
       <p>VORIS Service- und Dienstleistungs UG (haftungsbeschränkt) &amp; Co. KG<br>Eschersheimer Landstraße 42, 60322 Frankfurt am Main<br>Contact: <a href="#kontakt" onclick="closeLegal('datenschutz')">Contact form</a></p>
-      <h3>Cookies and Tracking</h3>
-      <p>This website uses Matomo for privacy-compliant analysis (self-hosted on counter.ixan.org, Site ID: 87). No personal data is passed to third parties. Your IP address is anonymised before storage. Matomo is only activated after your consent via the cookie banner.</p>
       <h3>Your Rights</h3>
       <p>You have the rights of access, rectification, erasure, restriction, data portability and objection. Please contact us via our <a href="#kontakt" onclick="closeLegal('datenschutz')">contact form</a>.</p>
     </div>
@@ -1579,27 +1523,6 @@ body.en [data-lang="en"] { display: block; }
 
 <!-- ══════════════════════ SCRIPTS ══════════════════════ -->
 <script>
-/* ── Cookie / Matomo ──────────────────────────────── */
-function acceptCookies(){
-  localStorage.setItem('voris_consent','accepted');
-  document.getElementById('cookieBanner').style.display='none';
-  if(typeof _paq!=='undefined') _paq.push(['setConsentGiven']);
-}
-function declineCookies(){
-  localStorage.setItem('voris_consent','declined');
-  document.getElementById('cookieBanner').style.display='none';
-}
-function matomoOptOut(){
-  if(typeof _paq!=='undefined') _paq.push(['forgetConsentGiven']);
-  localStorage.setItem('voris_consent','declined');
-  alert('Matomo-Tracking wurde deaktiviert.');
-}
-(function(){
-  var c=localStorage.getItem('voris_consent');
-  if(c==='accepted'){ document.getElementById('cookieBanner').style.display='none'; if(typeof _paq!=='undefined') _paq.push(['setConsentGiven']); }
-  else if(c==='declined'){ document.getElementById('cookieBanner').style.display='none'; }
-})();
-
 /* ── Language ─────────────────────────────────────── */
 function setLang(lang){
   document.body.classList.toggle('en', lang==='en');
@@ -1709,23 +1632,6 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
 });
 </script>
 
-
-<!-- Statcounter -->
-<script type="text/javascript">
-var sc_project=13075155; 
-var sc_invisible=1; 
-var sc_security="d2947a4f"; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/13075155/0/d2947a4f/1/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
 
 <!-- REVIVE:START -->
 <div style="display:flex;justify-content:center;margin:16px 0;">
